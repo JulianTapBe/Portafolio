@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Bello</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Estudio Bello</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#paquetes">Paquetes</a></li>
+                <li><a href="#sobremi">Sobre mí</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="inicio">
+        <h2>Bienvenido a Estudio Bello</h2>
+        <p>Capturando momentos inolvidables con calidad y pasión.</p>
+    </section>
+    <section id="portafolio">
+        <h2>Portafolio</h2>
+ 	<div class="gallery">
+ 	<a href="images/IMG_1625.jpg" target="_blank">
+		<img src="images/IMG_1625.jpg" alt="Foto 1" width="200" loading="lazy">
+	</a>
+	<a href="images/IMG_1636.jpg" target="_blank">
+        	<img src="images/IMG_1636.jpg" alt="Foto 2" width="200" loading="lazy">
+	</a>
+	<a href="images/IMG_1642.jpg" target="_blank">
+        	<img src="images/IMG_1642.jpg" alt="Foto 3" width="200" loading="lazy">
+	</a>
+	</div>
+        <p>Aquí van tus mejores fotografías.</p>
+    </section>
+    <section id="paquetes">
+        <h2>Paquetes</h2>
+        <p>Consulta nuestros paquetes de fotografía y video.</p>
+    </section>
+    <section id="sobremi">
+        <h2>Sobre mí</h2>
+        <p>Conoce más sobre mi trabajo y experiencia.</p>
+    </section>
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Contáctame por WhatsApp: <a href="https://wa.me/52721700251">2721700251</a></p>
+        <p>Instagram: <a href="https://instagram.com/j.juliantapbe" target="_blank">@j.juliantapbe</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Estudio Bello. Todos los derechos reservados.</p>
+    </footer>
+
+<script>
+    // Obtén el modal
+    var modal = document.createElement('div');
+    modal.classList.add('modal');
+    document.body.appendChild(modal);
+
+    // Crea la imagen dentro del modal
+    var modalImg = document.createElement('img');
+    modalImg.classList.add('modal-content');
+    modal.appendChild(modalImg);
+
+    // Agrega el botón para cerrar el modal
+    var span = document.createElement('span');
+    span.classList.add('close');
+    span.innerHTML = '&times;';
+    modal.appendChild(span);
+
+    // Función para abrir el modal
+    document.querySelectorAll('.gallery img').forEach(img => {
+        img.onclick = function() {
+            modal.style.display = 'block';
+            modalImg.src = this.src; // Asigna la fuente de la imagen al modal
+        };
+    });
+
+    // Función para cerrar el modal
+    span.onclick = function() {
+        modal.style.display = 'none';
+    };
+
+    // Cierra el modal si se hace clic fuera de la imagen
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    };
+</script>
+</body>
+</html>
