@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Bello</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Modal styles */
+        .modal {
+            visibility: hidden;
+            position: fixed;
+            z-index: 1003;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .modal.show {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: white;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Estudio Bello</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#" id="portafolio-link">Portafolio</a></li>
+                <li><a href="#" id="paquetes-link">Paquetes</a></li>
+                <li><a href="#sobremi">Sobre mí</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="inicio">
+        <h2>Bienvenido a Estudio Bello</h2>
+        <p>Capturando momentos inolvidables con calidad y pasión.</p>
+    </section>
+    
+    <section id="portafolio" class="fullscreen-section">
+        <h2>Portafolio</h2>
+        <div class="gallery">
+            <img src="images/IMG_1625.jpg" alt="Foto 1" width="200" loading="lazy">
+            <img src="images/IMG_1636.jpg" alt="Foto 2" width="200" loading="lazy">
+            <img src="images/IMG_1642.jpg" alt="Foto 3" width="200" loading="lazy">
+        </div>
+        <p>Aquí van tus mejores fotografías.</p>
+    </section>
+    
+    <section id="paquetes" class="fullscreen-section">
+        <h2>Paquetes</h2>
+        <p>Consulta nuestros paquetes de fotografía y video.</p>
+        <button class="close-fullscreen">Cerrar</button>
+    </section>
+    
+    <section id="sobremi">
+        <h2>Sobre mí</h2>
+        <p>Conoce más sobre mi trabajo y experiencia.</p>
+    </section>
+    
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>Contáctame por WhatsApp: <a href="https://wa.me/52721700251">2721700251</a></p>
+        <p>Instagram: <a href="https://instagram.com/j.juliantapbe" target="_blank">@j.juliantapbe</a></p>
+    </section>
+    
+    <footer>
+        <p>&copy; 2025 Estudio Bello. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <img id="modal-img" class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+    </div>
+
+    <script>
+        // Obtén el modal y los elementos necesarios
+        var modal = document.getElementById('modal');
+        var modalImg = document.getElementById('modal-img');
+        var closeModal = document.getElementById('close-modal');
+
+        // Agregar funcionalidad para abrir el modal al hacer clic en una imagen
+        document.querySelectorAll('.gallery img').forEach(img => {
+            img.onclick = function() {
+                modal.classList.add('show');
+                modalImg.src = this.src;
+            };
+        });
+
+        // Función para cerrar el modal
+        closeModal.onclick = function() {
+            modal.classList.remove('show');
+        };
+
+        // Cierra el modal si se hace clic fuera de la imagen
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.classList.remove('show');
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const portafolioLink = document.getElementById("portafolio-link");
+            const paquetesLink = document.getElementById("paquetes-link");
+            const portafolioSection = document.getElementById("portafolio");
+            const paquetesSection = document.getElementById("paquetes");
+            
+            function openFullscreen(section) {
+                closeFullscreen();
+                section.classList.add("show");
+                document.body.style.overflow = "hidden";
+            }
+
+            function closeFullscreen() {
+                document.querySelectorAll(".fullscreen-section").forEach(section => {
+                    section.classList.remove("show");
+                });
+                document.body.style.overflow = "auto";
+            }
+
+            portafolioLink.addEventListener("click", function (event) {
+                event.preventDefault();
+                openFullscreen(portafolioSection);
+            });
+
+            paquetesLink.addEventListener("click", function (event) {
+                event.preventDefault();
+                openFullscreen(paquetesSection);
+            });
+
+            document.addEventListener("click", function(event) {
+        if (event.target.classList.contains('fullscreen-section')) {
+            closeFullscreen();
+	    }
+            });
+
+            document.addEventListener("keydown", function (event) {
+                if (event.key === "Escape") {
+                    closeFullscreen();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
