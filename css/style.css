@@ -389,7 +389,7 @@ html {
 .logo {
   position: abolute;
   height: 130px; /* Logo más grande que el menú */
-  top: 32px;
+  top: -32px;
   left: 8px; /* Ajusta para centrar */
   
   
