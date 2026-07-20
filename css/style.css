@@ -388,8 +388,8 @@ html {
 
 .logo {
   position: absolute;
-  height: 140px; /* Logo más grande que el menú */
-  top: -40px; /* Ajusta para centrar */
+  height: 130px; /* Logo más grande que el menú */
+  top: -32px; /* Ajusta para centrar */
   left: 8px;
   
 }
