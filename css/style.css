@@ -387,9 +387,10 @@ html {
 }
 
 .logo {
-  position: absolute;
-  height: 130px; /* Logo más grande que el menú */
-  top: -32px; /* Ajusta para centrar */
+  position: static;
+  max-height: 100px; /* Logo más grande que el menú */
+  height: 40px;
+  width: auto; /* Ajusta para centrar */
   left: 8px;
   
 }
