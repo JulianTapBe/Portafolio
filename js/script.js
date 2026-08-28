@@ -12,12 +12,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalImg = document.getElementById('modal-img');
     const closeModal = document.getElementById('close-modal');
 
-    // Abre el modal al hacer clic en cualquier imagen de la galería
-    document.querySelectorAll('.gallery img').forEach(img => {
-        img.addEventListener("click", () => {
+    // Abre el modal al hacer clic en cualquier imagen de la galería.
+    // Se usa delegación de eventos (escuchamos en document) para que
+    // también funcione con imágenes agregadas dinámicamente después
+    // de cargar la página (por ejemplo, al elegir una categoría del portafolio).
+    document.addEventListener("click", (event) => {
+        const img = event.target.closest('.gallery img');
+        if (img) {
             modal.classList.add('show');
             modalImg.src = img.src;
-        });
+        }
     });
 
     // Cierra el modal con la “X”
@@ -85,6 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
     portafolioLink.addEventListener('click', (e) => {
         e.preventDefault();
         openSection(portafolioSection);
+        if (typeof volverCategorias === 'function') volverCategorias();
     });
 
     paquetesLink.addEventListener('click', (e) => {
