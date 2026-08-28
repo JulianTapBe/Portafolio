@@ -502,6 +502,132 @@ header {
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Tarjetas de categoría del portafolio */
+.portfolio-categorias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    width: 100%;
+    height: 65vh;
+    min-height: 400px;
+    margin-top: 20px;
+}
+ 
+.categoria-card {
+    position: relative;
+    flex: 1 1 300px;
+    min-width: 280px;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: flex 0.4s ease;
+}
+ 
+.categoria-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.15) 55%, rgba(0,0,0,0.35) 100%);
+    transition: background 0.3s ease;
+}
+ 
+.categoria-card:hover {
+    flex: 1.15 1 300px;
+}
+ 
+.categoria-card:hover::before {
+    background: rgba(0, 0, 0, 0.25);
+}
+ 
+.categoria-nombre {
+    position: relative;
+    z-index: 1;
+    color: white;
+    font-family: 'Georgia', serif;
+    font-size: 1.8em;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+ 
+.categoria-vacia {
+    background-color: #1d2d40;
+    flex-direction: column;
+    gap: 10px;
+}
+ 
+.categoria-subtexto {
+    position: relative;
+    z-index: 1;
+    color: #cfd8e3;
+    font-size: 0.9em;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+ 
+/* Vista de detalle por categoría */
+.portfolio-detalle {
+    display: none;
+    text-align: left;
+    margin-top: 20px;
+}
+ 
+.portfolio-detalle.show {
+    display: block;
+}
+ 
+.volver-btn {
+    background: none;
+    border: 2px solid #142c47;
+    color: #142c47;
+    padding: 8px 18px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+ 
+.volver-btn:hover {
+    background: #142c47;
+    color: white;
+}
+ 
+#detalle-titulo {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #142c47;
+}
+ 
+.detalle-vacio-msg {
+    display: none;
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 40px;
+}
+ 
+@media (max-width: 768px) {
+    .portfolio-categorias {
+        flex-direction: column;
+        height: auto;
+    }
+ 
+    .categoria-card {
+        height: 220px;
+        flex: none;
+    }
+ 
+    .categoria-card:hover {
+        flex: none;
+    }
+}
+
 .titulo-con-contorno {
     text-shadow: 
       3px 3px 0 #142c47,
