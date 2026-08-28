@@ -386,7 +386,7 @@ html {
 }
 
 .logo {
-  height: 60px; /* Logo más grande que el menú */
+  height: 80px; /* Logo más grande que el menú */
   width: auto;
   display: block;
   
