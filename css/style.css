@@ -381,16 +381,14 @@ html {
 }
 
 .menu {
-  position: relative;
-  height: 60px; /* Tamaño fijo del menú */
-  background: #333;
+  display: flex;
+  align-items: center;
 }
 
 .logo {
-  position: absolute;
-  height: 130px; /* Logo más grande que el menú */
-  top: -32px;
-  left: 8px; /* Ajusta para centrar */
+  height: 50px; /* Logo más grande que el menú */
+  width: auto;
+  display: block;
   
   
 }
