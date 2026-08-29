@@ -181,7 +181,7 @@ body.fullscreen-mode #contacto {
 }
 
 #inicio {
-    background-image: url('../images/Fondo_Iberia.jpg');
+    background-image: url('../images/Fondo_Iberia.webp');
     height: calc(100vh - 80px); /* 80px debe coincidir con la altura del header */
     min-height: 100vh;
     display: flex;
