@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const img = event.target.closest('.gallery img');
         if (img) {
             modal.classList.add('show');
-            modalImg.src = img.src;
+            modalImg.src = img.dataset.full || img.src;
         }
     });
 
