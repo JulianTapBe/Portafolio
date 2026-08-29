@@ -380,16 +380,35 @@ Trabajamos en equipo para brindar una experiencia cercana, creativa y profesiona
                 mensajeVacio.style.display = 'none';
                 categoria.fotos.forEach(function (archivo) {
                     const img = document.createElement('img');
-                    img.src = 'images/' + archivo;
+                    img.dataset.src = 'images/thumbs/' + archivo; // miniatura para la cuadrícula
+                    img.dataset.full = 'images/' + archivo; // foto original para el modal
                     img.alt = categoria.titulo;
-                    img.loading = 'lazy';
+                    img.decoding = 'async';
                     img.width = 200;
                     galeria.appendChild(img);
                 });
+                lazyLoadImagenesGaleria(galeria);
             }
  
             const portafolio = document.getElementById('portafolio');
             if (portafolio) portafolio.scrollTop = 0;
+        }
+
+		// Descarga cada foto solo cuando está a punto de entrar en pantalla,
+        // en vez de pedir todas las fotos de la categoría al mismo tiempo.
+        function lazyLoadImagenesGaleria(contenedor) {
+            const observer = new IntersectionObserver((entradas, obs) => {
+                entradas.forEach(entrada => {
+                    if (entrada.isIntersecting) {
+                        const img = entrada.target;
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        obs.unobserve(img);
+                    }
+                });
+            }, { rootMargin: '300px', threshold: 0.01 });
+ 
+            contenedor.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
         }
  
         function volverCategorias() {
